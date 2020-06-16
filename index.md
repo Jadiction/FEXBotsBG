@@ -1,1 +1,3 @@
-test
+<style>
+  background: #202020 url('https://i.imgur.com/5TyKz50.jpg') center fixed no-repeat;
+</style>
