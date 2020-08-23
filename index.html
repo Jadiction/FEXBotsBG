@@ -27,7 +27,7 @@
 			float:right;
 			margin-right:2%;
 			margin-top:5%;
-			padding:3px;
+			padding:5px;
 			vertical-align:middle;
 			height:auto;
 			width:250px;
@@ -47,6 +47,12 @@
 			padding-bottom:1px;
 			border-bottom:2px solid #FFFFFF;
 		}
+		.footer {
+			font-size: 12px;
+			border-top:2px solid #FFFFFF;
+			margin-top:3px;
+			padding-top:1px;
+		}
 		@media (max-width: 1335px) {
 			.infobox {
 				display: none;
@@ -56,8 +62,21 @@
 	<script>
 	$(function() {
 		$.getJSON("https://fexbots.com/recentupdates", function(data) {
-			$('#updates').html(data.updates);
+			updates = data.updates;
+			$("#updates").html(updates[0]); // Initiate
 		});
+		var i = 1;
+		var time = 20;
+		setInterval(function() {
+			$("#updates").html(updates[i]);
+			if(i == updates.length) i = 0;
+			else i++;
+		}, 20000);
+		setInterval(function() {
+			if(time <= 1) time = 20
+			else time = time - 1;
+			$(".footer").html('Next update in '+time+' second'+((time == 1)?'':'s')+'.');
+		}, 1000);
 		$(".typed").typed({
 			strings: [" is great!", "s are the best bots on xat.", "s are the fastest bots on xat.", " has been on xat since 2012!", "s loves^1500 everybody.", " has the best formatting.", " has a Twitter: @FEXBots", " has a Facebook page: https://facebook.com/FEXBots^3000", " has a great staff team!", " plans to stick around!", " has free bots too! https://fexbots.com/tools/freevspaid^3000", " has all the moderation features you could want!", " has many games such as hangman, madgab, scramble, trivia, random, and typerace.", " has many modes such as werewolf, pokebot, uno, and trivia.", "s can be fully customized!"],
 			contentType: 'text',
@@ -73,4 +92,5 @@
 <div class="infobox">
 	<div class="title"><img src="https://fexbots.com/Includes/Images/icons/tools/updates.png" style="width:22px;vertical-align:middle;"> Recent updates:</div>
 	<div id="updates">Loading...<br><img src="https://fexbots.com/Includes/Images/loader.gif"></div>
+	<div class="footer">https://FEXBots.com/</div>
 </div>
