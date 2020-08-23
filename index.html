@@ -55,6 +55,9 @@
 	</style>
 	<script>
 	$(function() {
+		$.getJSON("https://fexbots.com/recentupdates", function(data) {
+			$('#updates').html(data.updates);
+		});
 		$(".typed").typed({
 			strings: [" is great!", "s are the best bots on xat.", "s are the fastest bots on xat.", " has been on xat since 2012!", "s loves^1500 everybody.", " has the best formatting.", " has a Twitter: @FEXBots", " has a Facebook page: https://facebook.com/FEXBots^3000", " has a great staff team!", " plans to stick around!", " has free bots too! https://fexbots.com/tools/freevspaid^3000", " has all the moderation features you could want!", " has many games such as hangman, madgab, scramble, trivia, random, and typerace.", " has many modes such as werewolf, pokebot, uno, and trivia.", "s can be fully customized!"],
 			contentType: 'text',
@@ -64,12 +67,6 @@
 			backDelay: 1500,
 		});
 	});
-	const updates = () => {
-		$.getJSON("https://fexbots.com/recentupdates", function(data) {
-			$('#updates').html(data.updates);
-		});
-	}
-	updates();
 	</script>
 </head>
 <div class="typer">FEXBot<span class="typed"></span></div>
